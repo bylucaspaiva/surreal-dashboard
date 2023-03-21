@@ -98,26 +98,30 @@ const navItems = [
 const Sidebar = ({
   drawerWidth,
   isSidebarOpen,
-  setSidebarOpen,
-  isNonMobile
+  setIsSidebarOpen,
+  isNonMobile,
+  teste
 }) => {
   const { pathname } = useLocation();
   const [active, setActive] = useState("");
   const navigate = useNavigate();
   const theme = useTheme();
 
+  console.log(isSidebarOpen, teste, drawerWidth, isNonMobile)
+
   useEffect(() => {
     setActive(pathname.substring(1));
   }, [pathname])
+
 
   return (
     <Box component="nav">
       {isSidebarOpen && (
         <Drawer
           open={isSidebarOpen}
-          onClose={() => setSidebarOpen(false)}
+          onClose={() => setIsSidebarOpen(false)}
           variant="persistent"
-          anchor='left'
+          anchor="left"
           sx={{
             width: drawerWidth,
             "& .MuiDrawer-paper": {
@@ -129,16 +133,16 @@ const Sidebar = ({
             }
           }}
         >
-          <Box width={`100%`}>
+         <Box width="100%">
             <Box m="1.5rem 2rem 2rem 3rem">
-              <FlexBetween color={theme.palette.secondary.main} >
-                <Box display={`flex`} alignItems='center' gap='0.5rem'>
-                  <Typography variant='h4' fontWeight='bold'>
-                    SURREAL
+              <FlexBetween color={theme.palette.secondary.main}>
+                <Box display="flex" alignItems="center" gap="0.5rem">
+                  <Typography variant="h4" fontWeight="bold">
+                    SURREAL DASHBOARD
                   </Typography>
                 </Box>
                 {!isNonMobile && (
-                  <IconButton onClick={() => setSidebarOpen(!isSidebarOpen)}>
+                  <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
                     <ChevronLeft />
                   </IconButton>
                 )}
@@ -148,10 +152,10 @@ const Sidebar = ({
               {navItems.map(({ text, icon }) => {
                 if (!icon) {
                   return (
-                    <Typography key={text} sx={{ m: "2.25rem 0  1rem 3rem" }}>
+                    <Typography key={text} sx={{ m: "2.25rem 0 1rem 3rem" }}>
                       {text}
                     </Typography>
-                  )
+                  );
                 }
                 const lcText = text.toLowerCase();
 
@@ -159,33 +163,38 @@ const Sidebar = ({
                   <ListItem key={text} disablePadding>
                     <ListItemButton
                       onClick={() => {
-                        navigate(`/${lcText}`)
+                        navigate(`/${lcText}`);
                         setActive(lcText);
                       }}
                       sx={{
-                        backgroundColor: active === lcText 
-                        ? theme.palette.secondary[300]
-                        : "transparent",
-                        color: active === lcText 
-                          ? theme.palette.primary[600] 
-                          : theme.palette.secondary[100]
+                        backgroundColor:
+                          active === lcText
+                            ? theme.palette.secondary[300]
+                            : "transparent",
+                        color:
+                          active === lcText
+                            ? theme.palette.primary[600]
+                            : theme.palette.secondary[100],
                       }}
                     >
-                      <ListItemIcon sx={{
-                        ml: "2rem",
-                        color: active === lcText 
-                          ? theme.palette.primary[600] 
-                          : theme.palette.secondary[200]
-                      }}>
-                          {icon}
+                      <ListItemIcon
+                        sx={{
+                          ml: "2rem",
+                          color:
+                            active === lcText
+                              ? theme.palette.primary[600]
+                              : theme.palette.secondary[200],
+                        }}
+                      >
+                        {icon}
                       </ListItemIcon>
                       <ListItemText primary={text} />
                       {active === lcText && (
-                        <ChevronRightOutlined sx={{ ml: "auto"}} />
+                        <ChevronRightOutlined sx={{ ml: "auto" }} />
                       )}
                     </ListItemButton>
                   </ListItem>
-                )
+                );
               })}
             </List>
           </Box>

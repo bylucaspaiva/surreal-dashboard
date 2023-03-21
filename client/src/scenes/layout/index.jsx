@@ -3,25 +3,27 @@ import { Box, useMediaQuery } from "@mui/material";
 import { Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Navbar from "components/Navbar"
-import Sidebar from "components/Sidebar"
-
+import Sidebar from 'components/Sidebar';
 
 const Layout = () => {
   const isNonMobile = useMediaQuery("(min-width: 600px)");
-  const [isSideBarOpen, setIsSideBarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  console.log("side", isSidebarOpen)
 
   return (
-    <Box display={isNonMobile ? 'flex' : 'block'} width={`100%`} height={`100%`}>
-      <Sidebar 
+    <Box display={isNonMobile ? 'flex' : 'block'} width="100%" height="100%">
+      <Sidebar
+        teste="teste"
         isNonMobile={isNonMobile}
         drawerWidth="250px"
-        isSideBarOpen={isSideBarOpen}
-        setIsSideBarOpen={setIsSideBarOpen}
+        isSidebarOpen={isSidebarOpen}
+        setIsSidebarOpen={setIsSidebarOpen}
       />
       <Box>
         <Navbar 
-          isSideBarOpen={isSideBarOpen}
-          setIsSideBarOpen={setIsSideBarOpen}
+          isSidebarOpen={isSidebarOpen}
+          setIsSidebarOpen={setIsSidebarOpen}
         />
         <Outlet />
       </Box>
