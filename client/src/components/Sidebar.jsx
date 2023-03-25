@@ -107,7 +107,6 @@ const Sidebar = ({
   const navigate = useNavigate();
   const theme = useTheme();
 
-  console.log(isSidebarOpen, teste, drawerWidth, isNonMobile)
 
   useEffect(() => {
     setActive(pathname.substring(1));
