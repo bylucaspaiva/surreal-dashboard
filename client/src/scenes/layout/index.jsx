@@ -18,7 +18,7 @@ const Layout = () => {
   return (
     <Box display={isNonMobile ? 'flex' : 'block'} width="100%" height="100%">
       <Sidebar
-        teste="teste"
+        user={data || {}}
         isNonMobile={isNonMobile}
         drawerWidth="250px"
         isSidebarOpen={isSidebarOpen}
@@ -26,6 +26,7 @@ const Layout = () => {
       />
       <Box>
         <Navbar 
+          user={data || {}}
           isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
         />
