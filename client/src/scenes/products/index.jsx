@@ -6,6 +6,8 @@ import Header from 'components/Header';
 
 
 const Products = () => {
+  const { data, isLoading } = useGetProductsQuery();
+  console.log("data", data);
   return (
     <Box>
       <Header title="PRODUCTS" subtitle="See your list of products." />
