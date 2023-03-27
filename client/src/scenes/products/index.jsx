@@ -91,10 +91,9 @@ const Products = () => {
           rowGap="20px"
           columnGap="1.33%"
           sx={{
-            "& > div": { gridColumn: isNonMobile ? undefined : "span 4" }
+            "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
           }}
         >
-          <div>
             {data.map(({
               _id,
               name,
@@ -117,7 +116,6 @@ const Products = () => {
                 stat={stat}
               />
             ))}
-          </div>
         </Box>
       ) : <>Loading...</>}
     </Box>
