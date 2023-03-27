@@ -5,7 +5,7 @@ import { themeSettings } from "theme";
 import { useMemo } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Dashboard from "scenes/dashboard";
-import Layout from 'scenes/layout'
+import Layout from 'scenes/layout';
 
 function App() {
   const mode = useSelector((state) => state.global.mode);
