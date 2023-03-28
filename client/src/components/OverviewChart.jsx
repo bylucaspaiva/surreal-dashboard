@@ -52,39 +52,39 @@ const OverviewChart = ({ isDashboard = false, view }) => {
 
   return (
     <ResponsiveLine
-    theme={{
-              axis: {
-                domain: {
-                  line: {
-                    stroke: theme.palette.secondary[200],
-                  },
-                },
-                legend: {
-                  text: {
-                    fill: theme.palette.secondary[200],
-                  },
-                },
-                ticks: {
-                  line: {
-                    stroke: theme.palette.secondary[200],
-                    strokeWidth: 1,
-                  },
-                  text: {
-                    fill: theme.palette.secondary[200],
-                  },
-                },
-              },
-              legends: {
-                text: {
-                  fill: theme.palette.secondary[200],
-                },
-              },
-              tooltip: {
-                container: {
-                  color: theme.palette.primary.main,
-                },
-              },
-            }}
+      theme={{
+        axis: {
+          domain: {
+            line: {
+              stroke: theme.palette.secondary[200],
+            },
+          },
+          legend: {
+            text: {
+              fill: theme.palette.secondary[200],
+            },
+          },
+          ticks: {
+            line: {
+              stroke: theme.palette.secondary[200],
+              strokeWidth: 1,
+            },
+            text: {
+              fill: theme.palette.secondary[200],
+            },
+          },
+        },
+        legends: {
+          text: {
+            fill: theme.palette.secondary[200],
+          },
+        },
+        tooltip: {
+          container: {
+            color: theme.palette.primary.main,
+          },
+        },
+      }}
       data={view === "sales" ? totalSalesLine : totalUnitsLine}
       margin={{ top: 20, right: 50, bottom: 50, left: 70 }}
       xScale={{ type: 'point' }}
@@ -101,7 +101,7 @@ const OverviewChart = ({ isDashboard = false, view }) => {
       axisRight={null}
       axisBottom={{
         format: (v) => {
-          if(isDashboard) return v.slice(0,3);
+          if (isDashboard) return v.slice(0, 3);
           return v;
         },
         orient: 'bottom',
@@ -117,7 +117,7 @@ const OverviewChart = ({ isDashboard = false, view }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard ? "" : `Total ${view === 'sales' ?  "Revenue" : "units"} for Year`,
+        legend: isDashboard ? "" : `Total ${view === 'sales' ? "Revenue" : "units"} for Year`,
         legendOffset: -60,
         legendPosition: 'middle'
       }}
@@ -131,31 +131,31 @@ const OverviewChart = ({ isDashboard = false, view }) => {
       useMesh={true}
       legends={
         !isDashboard ? [
-        {
-          anchor: 'bottom-right',
-          direction: 'column',
-          justify: false,
-          translateX: 30,
-          translateY: -40,
-          itemsSpacing: 0,
-          itemDirection: 'left-to-right',
-          itemWidth: 80,
-          itemHeight: 20,
-          itemOpacity: 0.75,
-          symbolSize: 12,
-          symbolShape: 'circle',
-          symbolBorderColor: 'rgba(0, 0, 0, .5)',
-          effects: [
-            {
-              on: 'hover',
-              style: {
-                itemBackground: 'rgba(0, 0, 0, .03)',
-                itemOpacity: 1
+          {
+            anchor: 'bottom-right',
+            direction: 'column',
+            justify: false,
+            translateX: 30,
+            translateY: -40,
+            itemsSpacing: 0,
+            itemDirection: 'left-to-right',
+            itemWidth: 80,
+            itemHeight: 20,
+            itemOpacity: 0.75,
+            symbolSize: 12,
+            symbolShape: 'circle',
+            symbolBorderColor: 'rgba(0, 0, 0, .5)',
+            effects: [
+              {
+                on: 'hover',
+                style: {
+                  itemBackground: 'rgba(0, 0, 0, .03)',
+                  itemOpacity: 1
+                }
               }
-            }
-          ]
-        } 
-      ] : undefined}
+            ]
+          }
+        ] : undefined}
     />
   )
 }
