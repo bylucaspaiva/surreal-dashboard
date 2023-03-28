@@ -41,7 +41,7 @@ app.use(cors());
 app.use("/client", clientRoutes);
 app.use("/general", generalRoutes);
 app.use("/management", managementRoutes);
-app.use("/saler", salesRoutes);
+app.use("/sales", salesRoutes);
 
 /* Mongoose setup */
 
@@ -55,8 +55,8 @@ mongoose
 
   /* */
   //Product.insertMany(dataProduct);
-  //ProductStat.insertMany(dataProductStat);
+  // OverAllStat.insertMany(dataOverallStat);
+  // ProductStat.insertMany(dataProductStat);
   //User.insertMany(dataUser);
   // Transaction.insertMany(dataTransaction);
-  // OverAllStat.insertMany(dataOverallStat);
 }).catch((error) => console.log(`${error} did not connect`))

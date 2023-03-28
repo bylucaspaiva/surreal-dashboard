@@ -16,10 +16,10 @@ export const getProducts = async (req, res) => {
         return {
           ...product._doc,
           stat,
-
         }
       })
     );
+    console.log(productsWitsStats)
     res.status(200).json(productsWitsStats);
   } catch (error) {
     res.status(404).json({message: error.message})
