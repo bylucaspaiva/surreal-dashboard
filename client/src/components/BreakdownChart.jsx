@@ -33,11 +33,47 @@ const BreakdownChart = ({isDashboard = false}) => {
       position="relative"
     >
     <ResponsivePie
-        data={data}
-        margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
-        innerRadius={0.5}
-        padAngle={0.7}
-        cornerRadius={3}
+     theme={{
+        axis: {
+          domain: {
+            line: {
+              stroke: theme.palette.secondary[200],
+            },
+          },
+          legend: {
+            text: {
+              fill: theme.palette.secondary[200],
+            },
+          },
+          ticks: {
+            line: {
+              stroke: theme.palette.secondary[200],
+              strokeWidth: 1,
+            },
+            text: {
+              fill: theme.palette.secondary[200],
+            },
+          },
+        },
+        legends: {
+          text: {
+            fill: theme.palette.secondary[200],
+          },
+        },
+        tooltip: {
+          container: {
+            color: theme.palette.primary.main,
+          },
+        },
+      }}
+        data={formattedData}
+        margin={ isDashboard 
+        ? { top: 40, right: 80, bottom: 100, left: 50 }
+        : { top: 40, right: 80, bottom: 80, left: 80 }
+        }
+        sortByValue={true}
+        color={{ datum: "data.color"}}
+        innerRadius={0.45}
         activeOuterRadiusOffset={8}
         borderWidth={1}
         borderColor={{
@@ -49,8 +85,8 @@ const BreakdownChart = ({isDashboard = false}) => {
                 ]
             ]
         }}
-        arcLinkLabelsSkipAngle={10}
-        arcLinkLabelsTextColor="#333333"
+        enableArcLinkLabels={!isDashboard}
+        arcLinkLabelsTextColor={theme.palette.secondary[200]}
         arcLinkLabelsThickness={2}
         arcLinkLabelsColor={{ from: 'color' }}
         arcLabelsSkipAngle={10}
@@ -63,26 +99,7 @@ const BreakdownChart = ({isDashboard = false}) => {
                 ]
             ]
         }}
-        defs={[
-            {
-                id: 'dots',
-                type: 'patternDots',
-                background: 'inherit',
-                color: 'rgba(255, 255, 255, 0.3)',
-                size: 4,
-                padding: 1,
-                stagger: true
-            },
-            {
-                id: 'lines',
-                type: 'patternLines',
-                background: 'inherit',
-                color: 'rgba(255, 255, 255, 0.3)',
-                rotation: -45,
-                lineWidth: 6,
-                spacing: 10
-            }
-        ]}
+        
         fill={[
             {
                 match: {
@@ -138,10 +155,10 @@ const BreakdownChart = ({isDashboard = false}) => {
                 anchor: 'bottom',
                 direction: 'row',
                 justify: false,
-                translateX: 0,
-                translateY: 56,
+                translateX: isDashboard ? 20 : 0,
+                translateY: isDashboard ? 50 : 56,
                 itemsSpacing: 0,
-                itemWidth: 100,
+                itemWidth: 85,
                 itemHeight: 18,
                 itemTextColor: '#999',
                 itemDirection: 'left-to-right',
@@ -152,13 +169,28 @@ const BreakdownChart = ({isDashboard = false}) => {
                     {
                         on: 'hover',
                         style: {
-                            itemTextColor: '#000'
+                            itemTextColor: theme.palette.primary[500]
                         }
                     }
                 ]
             }
         ]}
     />
+    <Box
+      position="absolute"
+      top="50%"
+      left="50%"
+      color={ theme.palette.secondary[400]}
+      textAlign="center"
+      pointerEvents="none"
+      sx={{
+        transform: isDashboard 
+         ? "translate(-75%, -170%)"
+         : "translate(-50%, -100%)"
+      }}
+    >
+      <Typography variant="h6">{!isDashboard && "Total:"} ${data.yearlySalesTotal}</Typography>
+    </Box>
     </Box>
   )
 }
