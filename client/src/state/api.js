@@ -45,10 +45,10 @@ export const api = createApi({
       query: () => "client/customers",
       providesTags: ["Customers"],
     }),
-    getPerformance: build.query({
+    getUserPerformance: build.query({
       query: (id) => `management/performance/${id}`,
-      providesTags: ["Performance"]
-    })
+      providesTags: ["Performance"],
+    }),
   }),
 });
 
@@ -60,5 +60,5 @@ export const {
   useGetGeographyQuery,
   useGetSalesQuery,
   useGetAdminsQuery,
-  useGetPerformanceQuery
+  useGetUserPerformanceQuery
 } = api;
