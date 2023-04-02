@@ -97,6 +97,7 @@ const OverviewChart = ({ isDashboard = false, view }) => {
       }}
       yFormat=" >-.2f"
       curve="catmullRom"
+      enableArea={isDashboard}
       axisTop={null}
       axisRight={null}
       axisBottom={{
@@ -116,6 +117,7 @@ const OverviewChart = ({ isDashboard = false, view }) => {
         orient: 'left',
         tickSize: 5,
         tickPadding: 5,
+        tickValues: 5,
         tickRotation: 0,
         legend: isDashboard ? "" : `Total ${view === 'sales' ? "Revenue" : "units"} for Year`,
         legendOffset: -60,

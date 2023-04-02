@@ -8,6 +8,8 @@ const StatBox = ({title, value, increase, icon, description}) => {
 
   const theme = useTheme();
 
+  console.log("value", value);
+
   return (
     <Box
       gridColumn="span 2"

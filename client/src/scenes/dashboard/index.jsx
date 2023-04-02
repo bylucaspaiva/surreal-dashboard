@@ -99,6 +99,103 @@ const Dashboard = () => {
         }}
       >
         {/* row number 1} */}
+        <StatBox 
+          title="Total Customers"
+          value={data && data.totalCustomers}
+          increase="+14%"
+          description="Since last month"
+          icon={
+            <Email sx={{color: theme.palette.secondary[300], fontSize: "26px"}} />
+          }
+        />
+        <StatBox 
+          title="Sales Today"
+          value={data && data.todayStat.totalSales}
+          increase="+8%"
+          description="Since last month"
+          icon={
+            <PointOfSale sx={{color: theme.palette.secondary[300], fontSize: "26px"}} />
+          }
+        />
+        <Box
+          gridColumn="span 8"
+          gridRow="span 2"
+          backgroundColor={theme.palette.background.alt}
+          p="1rem"
+          borderRadius="0.55rem"
+        >
+          <OverviewChart view="sales" isDashboard={true} />
+        </Box>
+        <StatBox 
+          title="Monthly Sales"
+          value={data && data.thisMonthStat.totalSales}
+          increase="+5%"
+          description="Since last month"
+          icon={
+            <PersonAdd sx={{color: theme.palette.secondary[300], fontSize: "26px"}} />
+          }
+        />
+        <StatBox 
+          title="Yearly Sales"
+          value={data && data.yearlySalesTotal}
+          increase="+39%"
+          description="Since last month"
+          icon={
+            <Email sx={{color: theme.palette.secondary[300], fontSize: "26px"}} />
+          }
+        />
+
+        <Box
+          gridColumn="span 8"
+          gridRow="span 3"
+          height="80vh"
+          sx={{
+          "& .MuiDataGrid-root": {
+            border: "none",
+          },
+          "& .MuiDataGrid-cell": {
+            borderBottom: "none",
+          },
+          "& .MuiDataGrid-ColumnHeaders": {
+            backgroundColor: theme.palette.background.alt,
+            color: theme.palette.secondary[100],
+            borderBottom: "none",
+          }, 
+          "& .MuiDataGrid-virtualScroller": {
+            backgroundColor: theme.palette.primary.light,
+          },
+          "& .MuiDataGrid-footerContainer": {
+            backgroundColor: theme.palette.background.alt,
+            color: theme.palette.secondary[100],
+            borderTop: "none",
+          },
+          "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+            color: `${theme.palette.secondary[200]} !important`,
+          }
+        }}
+        >
+          <DataGrid 
+          loading={isLoading || !data}
+          getRowId={(row) => row._id}
+          rows={(data && data.transactions) || []}
+          columns={columns}
+        />
+        </Box>
+        <Box
+          gridColumn="span 4"
+          gridRow="span 3"
+          backgroundColor={theme.palette.background.alt}
+          p="1.5rem"
+          borderRadius="0.55rem"
+        >
+          <Typography variant="h6" sx={{color: theme.palette.secondary[100]}}>
+            Sales By Category
+          </Typography>
+          <BreakdownChart isDashboard={true} />
+          <Typography p="0 0.6rem" fontSize="0.8rem" sx={{color: theme.palette.secondary[200]}}>
+            Breakdown of real states and information via category for revenue made for this year and total sales.
+          </Typography>
+        </Box>
       </Box>
     </Box>
   )
