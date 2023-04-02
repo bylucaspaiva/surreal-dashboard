@@ -19,7 +19,6 @@ export const getProducts = async (req, res) => {
         }
       })
     );
-    console.log(productsWitsStats)
     res.status(200).json(productsWitsStats);
   } catch (error) {
     res.status(404).json({message: error.message})
@@ -29,7 +28,6 @@ export const getProducts = async (req, res) => {
 export const getCustomers = async (req, res) => {
   try {
     const customers = await User.find({ role: "user"}).select("-password");
-    console.log("Customers", customers);
     res.status(200).json(customers)
   } catch (error) {
     res.status(404).json({message: error.message})
