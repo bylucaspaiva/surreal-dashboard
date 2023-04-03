@@ -1,5 +1,20 @@
 # surreal-dashboard
 
+<div style="display: flex; justify-content: space-between;">
+  <div style="width: 33%;">
+    <img src="https://user-images.githubusercontent.com/58491622/229386615-ac2cb4f8-221d-489a-8fe7-6676fede837c.png" alt="Dashboard" />
+  </div>
+  <div style="width: 33%;">
+    <img src="https://user-images.githubusercontent.com/58491622/229386763-c86eafb4-52dd-4825-b0ff-1e14c0aaddfd.png" alt="Geography" />
+  </div>
+  <div style="width: 33%;">
+    <img src="https://user-images.githubusercontent.com/58491622/229386872-39b48239-3d3d-42e1-84d5-8c4ea498c567.png" alt="Products" />
+  </div>
+</div>
+
+
+Live code here: [surreal-dashboard](https://surreal-dashboard-frontend.onrender.com/dashboard)
+
 Surreal Dashboard is a feature-rich web application built using Node.js that provides a seamless experience for managing data and analytics for businesses. The dashboard offers a comprehensive suite of tools for visualizing data, analyzing trends, and making data-driven decisions.
 
 - [Axios](https://axios-http.com/ptbr/docs/intro): Promise-based HTTP client for the browser and Node.js
@@ -35,7 +50,6 @@ Surreal Dashboard is a feature-rich web application built using Node.js that pro
 3. Create a `.env` file in the `backend` directory and set the following environment variables:
    - `PORT`: The port number to run the server on (default is 5001).
    - `MONGO_URI`: The URI for connecting to your MongoDB instance (e.g. mongodb://localhost:27017/surreal-dashboard).
-   - `JWT_SECRET`: A secret key for encoding and decoding JWTs.
 4. Start the server: `npm run start`.
 
 ### Frontend Setup
